@@ -10,19 +10,21 @@ difficulty=2
 enable-command-block=false
 enable-query=false
 enable-rcon=false
-force-gamemode=true
+force-gamemode=false
 gamemode=0
 generate-structures=true
 generator-settings=
 hardcore=false
 level-name=istari
-level-seed=istari-1
-level-type=MIDDLE_EARTH
+level-seed=istari-alpha-1
+level-type=middleearth
 max-build-height=256
-max-players=4
+max-players=8
+max-threads=4
+motd=The Official Server for Istari
 online-mode=true
 op-permission-level=4
-player-idle-timeout=20
+player-idle-timeout=30
 pvp=true
 resource-pack=
 server-ip=
@@ -33,7 +35,7 @@ spawn-monsters=true
 spawn-npcs=true
 spawn-protection=0
 view-distance=12
-white-list=false
+white-list=true
 END
 
 read -d  USAGE <<-END
@@ -41,6 +43,11 @@ USAGE: $(basename $0)
 END
 
 BASE_DIR="$(cd "$(dirname "$0")"; pwd)"
+JAVA=$(which java)
+
+if [[ -x "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java" ]]; then
+    JAVA="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java"
+fi
 
 # Helper Functions ####################################################################################################
 
@@ -127,13 +134,13 @@ function command-create {
     mkdir -p "$BASE_DIR/server"
 
     pushd "$BASE_DIR/server" >/dev/null
-        java -jar "../$FORGE_INSTALLER_JAR" --installServer
+        "$JAVA" -jar "../$FORGE_INSTALLER_JAR" --installServer
 
         rm -rf mods
         mkdir mods
 
-        ln -s ../config .
-        ln -s ../scripts .
+        ln -s "../config" .
+        ln -s "../scripts" .
         echo "eula=true" > eula.txt
 
         mkdir logs
@@ -186,7 +193,7 @@ function command-start {
     pushd "$BASE_DIR/server" &>/dev/null
         mkdir -p logs
 
-        echo "[$(date)] Starting server..."
+        echo "[$(date)] Setting up server..."
         printf "Starting Minecraft Server with properties:\n\n$(cat server.properties)\n\n" >> logs/server.log
 
         rm "ops.json" &>/dev/null
@@ -195,21 +202,27 @@ function command-start {
         rm stdin &>/dev/null
         touch stdin
 
-        SERVER_JAR=$(ls forge*universal.jar | tail -n1)
+        SERVER_JAR=$(ls forge*.jar | tail -n1)
 
         rm -rf mods
         mkdir -p mods
         cd mods
-        ls ../../mods/ | grep -v "client.jar$" | while read FILE; do cp -r ../../mods/$FILE $FILE; done
+        ls ../../mods/ | while read FILE; do cp -r "../../mods/$FILE" "$FILE"; done
+	cat ../../client-mods.txt | while read PATTERN; do rm $PATTERN; done
         cd ..
 
-        zip -r9 "logs/$(date +'%Y-%m-%d-%H-%M')-server.log" server.log
         cd logs
-        ls -t "*-server.log" | awk 'NR>5' | while read FILE; do rm $FILE; done
+        if [[ -e "server.log" ]]; then
+            zip -r9 "$(date +'%Y-%m-%d-%H-%M')-server.log.zip" server.log
+	    rm server.log
+        fi
+        ls -t "*-server.log.zip" 2>/dev/null | awk 'NR>5' | while read FILE; do rm $FILE; done
         cd ..
 
+        echo "[$(date)] Starting server..."
         tail -n 0 -F stdin \
-            | java -XX:+UseG1GC -Xmx6G -Xms6G \
+            | "$JAVA" -XX:+UseG1GC -Xmx3G -Xms3G \
+	    	-Dio.netty.leakDetection.level=advanced \
                 -Dsun.rmi.dgc.server.gcInterval=2147483646 \
                 -Dfml.queryResult=confirm \
                 -XX:+UnlockExperimentalVMOptions \
@@ -237,12 +250,13 @@ function command-start {
 
     ATTEMPTS=0
     STOP="NO"
+    echo "[$(date)] Waiting for server to finish starting up..."
     while [[ "$STOP" == "NO" ]]; do
         PID=$(find-running-server-pid)
         [[ "$PID" != "" ]] && STOP="YES"
 
         if [[ $ATTEMPTS -gt 60 ]]; then
-            echo "Failed to start server after 60 seconds"
+	    echo "[$(date)] Failed to start server after 60 seconds"
             exit 1
         fi
         (( ATTEMPTS = ATTEMPTS + 1 ))
@@ -321,4 +335,3 @@ case $COMMAND in
     tail)       command-tail;;
     *)          cancel "Unrecognized command: $COMMAND"
 esac
-
