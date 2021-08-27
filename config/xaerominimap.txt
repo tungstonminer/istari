@@ -89,8 +89,8 @@ showTime:0
 biomeColorsVanillaMode:false
 lookingAtAngle:10
 lookingAtAngleVertical:180
-centeredEnlarged:false
-zoomedOutEnlarged:false
+centeredEnlarged:true
+zoomedOutEnlarged:true
 alwaysEntityNametags:false
 minimapTextAlign:0
 showAngles:false
