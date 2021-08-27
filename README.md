@@ -1,11 +1,9 @@
-The Istari ModPack combines the magical word of Lord of the Rings with the magical machines of Thaumcraft to place you
-in the role of a young wizard just starting out on your first journeys in Middle Earth.  Explore the many exotic and
-dangerous locations of Middle Earth while you learn your craft and become an ever more powerful mage. Trade with the
-people you meet for food and equipment, but watch out for orcs, trolls, and even worse!
+![](https://raw.githubusercontent.com/wiki/tungstonminer/istari/images/bridge-of-kazad-dum.jpg)
 
-Since this mod is largely based around the LotR Mod, and Thaumcraft 4, the following wikis will answer almost all of your questions:
+If you've ever read The Lord of the Rings and wished you *were* Gandalf, this is the modpack you've been waiting for.  Combining the magical tools and machinery of Thaumcraft with the breath-taking scope of the Lord of the Rings mod, Istari places you in Middle Earth at the start of your journey to *become* an all-powerful wizard.
 
-* [Thaumcraft 4 Wiki](https://thaumcraft-4.fandom.com/wiki/Thaumcraft_4_Wiki)
-* [Lord of the Rings Minecraft Mod Wiki](https://lotrminecraftmod.fandom.com/wiki/The_Lord_of_the_Rings_Minecraft_Mod_Wiki)
+Start by befriending the Hobbits, and creating a home base in which to begin your magical education in The Shire.  No hostile creatures will harm you, and you can easily hire obliging farmer Hobbits to tend your farm for you.  Gear up, and saddle a shire pony to make your first trip to Bree.  Beware of bandits by day, and raiding parties of Orcs by night, though!  It's not safe in the wide world outside The Shire.
 
-There are a few other things related to the modpack which are addresses on [our own wiki](https://github.com/tungstonminer/istari/wiki).
+As you make your first wand, learn alchemy, and even how to imbue common objects with magical properties, you journeys will take you farther afield to befriend Dwarves, Elves, and men, but also to fight orcs, trolls, and wargs!  Prepare your most powerful magical artifacts, hire some Gondorian soldiers, and eventually take on the power of Mordor!
+
+To learn more, check out [the wiki](https://github.com/tungstonminer/istari/wiki)!
