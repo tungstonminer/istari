@@ -17,4 +17,7 @@ options.txt
 resourcepacks/
 saves/
 screenshots/
+servers.dat
+server/
+usercache.json
 usernamecache.json
