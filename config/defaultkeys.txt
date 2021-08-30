@@ -37,14 +37,20 @@ key_Alignment Cycle Left:203
 key_Alignment Cycle Right:205
 key_Alignment Group Prev:200
 key_Alignment Group Next:208
-key_openblocks.keybind.drop_brick:48
+key_openblocks.keybind.drop_brick:0
 key_openblocks.keybind.vario_switch:0
 key_openblocks.keybind.vario_vol_up:0
 key_openblocks.keybind.vario_vol_down:0
+key_key.astikoor.desc:36
 key_Baubles Inventory:48
 key_Change Wand Focus:33
 key_Activate Hover Harness:35
 key_Misc Wand Toggle:34
+key_waila.keybind.wailaconfig:11
+key_waila.keybind.wailadisplay:0
+key_waila.keybind.liquid:25
+key_waila.keybind.recipe:0
+key_waila.keybind.usage:0
 key_Automagy.key.focusCrafting:46
 key_invtweaks.key.sort:16
 key_key.rotateup:0
@@ -67,7 +73,7 @@ key_gui.xaero_toggle_grid:0
 key_gui.xaero_toggle_waypoints:0
 key_gui.xaero_toggle_map_waypoints:0
 key_gui.xaero_toggle_map:0
-key_gui.xaero_enlarge_map:0
+key_gui.xaero_enlarge_map:43
 key_gui.xaero_waypoints_key:65
 key_gui.xaero_zoom_in:13
 key_gui.xaero_zoom_out:12

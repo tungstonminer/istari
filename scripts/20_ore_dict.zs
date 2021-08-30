@@ -1,5 +1,25 @@
 ########################################################################################################################
 
+var LOTR_MUG_METAS = [
+    0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100
+] as int[];
+
+
+########################################################################################################################
+
+# HarvestCraft -- don't allow a bucket of milk to count as milk food portion
+<ore:listAllmilk>.remove(<minecraft:milk_bucket>);
+
+# LOTR -- add milk items to the foodMilk entry
+for meta in LOTR_MUG_METAS {
+    <ore:listAllmilk>.add(<lotr:item.mugMilk>.definition.makeStack(meta));
+}
+
+# LOTR -- add miruvor to a common ore dict
+for meta in LOTR_MUG_METAS {
+    <ore:listAllmiruvor>.add(<lotr:item.mugMiruvor>.definition.makeStack(meta));
+}
+
 # LOTR -- add gems to appropriate dict entries
 <ore:blockDiamond>.add(<lotr:tile.blockGem:5>);
 <ore:blockEmerald>.add(<lotr:tile.blockGem:9>);

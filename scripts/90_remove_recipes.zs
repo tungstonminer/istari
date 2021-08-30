@@ -36,6 +36,10 @@ var REMOVE_AND_HIDE = [
     # HarvestCraft
     <harvestcraft:salt>,
     <harvestcraft:oven>,
+    <harvestcraft:quern>,
+
+    # LOTR
+    <lotr:tile.goran>,
 
     # Minecraft
     <minecraft:activator_rail>,

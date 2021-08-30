@@ -10,6 +10,12 @@ recipes.addShaped(
     ]
 );
 
+# Cake -- use a HarvestCraft-friendly recipe
+recipes.removeShaped(<minecraft:cake>);
+recipes.addShapeless(<minecraft:cake>, [
+    <ore:toolBakeware>, <ore:foodDough>, <ore:listAllmilk>, <ore:listAllsugar>, <ore:dyeRed>
+]);
+
 # Ender Pearl -- allow creating ender pearls using LOTR materials
 recipes.addShaped(
     <minecraft:ender_pearl>, [
@@ -36,6 +42,13 @@ Crucible.addRecipe("CRUCIBLE", <minecraft:nether_wart>, <minecraft:red_mushroom>
 
 # Nether Wart -- allow creating netherrack from LOTR materials
 furnace.addRecipe(<minecraft:netherrack>, <lotr:tile.rock:4>);
+
+# Pumpkin Pie -- use a HarvestCraft-friendly recipe
+recipes.removeShaped(<lotr:item.mushroomPie>);
+recipes.addShapeless(<lotr:item.mushroomPie>, [
+    <ore:toolBakeware>, <ore:foodDough>, <ore:listAllegg>,
+    <ore:listAllSugar>, <ore:cropPumpkin>
+]);
 
 # Quartz Block -- allow creating blocks of quartz my alchemy
 Crucible.addRecipe("CRUCIBLE", <minecraft:quartz_block>, <lotr:tile.oreStorage2:3>, "vitreus 4");
