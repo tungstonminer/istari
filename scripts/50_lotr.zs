@@ -1,8 +1,62 @@
+import minetweaker.item.IItemStack;
+import mods.lotr.ct.angmar;
 import mods.lotr.ct.dale;
-import mods.lotr.ct.lothlorien;
+import mods.lotr.ct.dolGuldur;
+import mods.lotr.ct.gundabad;
+import mods.lotr.ct.halfTrolls;
 import mods.lotr.ct.highElves;
 import mods.lotr.ct.hobbits;
+import mods.lotr.ct.lothlorien;
+import mods.lotr.ct.mordor;
 import mods.lotr.ct.rivendell;
+
+########################################################################################################################
+
+var EMPTY_CONTAINERS = {
+    "aleHorn": <lotr:item.aleHorn>,
+    "bottle": <minecraft:glass_bottle>,
+    "ceramicMug": <lotr:item.ceramicMug>,
+    "copperGoblet": <lotr:item.gobletCopper>,
+    "goldenAleHorn": <lotr:item.aleHornGold>,
+    "goldenGoblet": <lotr:item.gobletGold>,
+    "silverGoblet": <lotr:item.gobletSilver>,
+    "skullCup": <lotr:item.skullCup>,
+    "waterskin": <lotr:item.waterskin>,
+    "wineGlass": <lotr:item.wineGlass>,
+    "woodenGoblet": <lotr:item.gobletWood>,
+    "woodenMug": <lotr:item.mug>,
+} as IItemStack[string];
+
+var CONTAINER_META = {
+    "aleHorn": 1000,
+    "bottle": 800,
+    "ceramicMug": 100,
+    "copperGoblet": 400,
+    "goldenAleHorn": 1100,
+    "goldenGoblet": 200,
+    "silverGoblet": 300,
+    "skullCup": 600,
+    "waterskin": 900,
+    "wineGlass": 700,
+    "woodenGoblet": 500,
+    "woodenMug": 0,
+} as int[string];
+
+var CONTAINER_NAMES = [
+    "aleHorn",
+    "bottle",
+    "ceramicMug",
+    "copperGoblet",
+    "goldenAleHorn",
+    "goldenGoblet",
+    "silverGoblet",
+    "skullCup",
+    "waterskin",
+    "wineGlass",
+    "woodenGoblet",
+    "woodenMug",
+] as string[];
+
 
 ########################################################################################################################
 
@@ -87,6 +141,52 @@ recipes.addShapeless(<lotr:item.lemonCake>, [
     <ore:toolBakeware>, <ore:foodDough>, <ore:listAllmilk>, <ore:listAllsugar>,
     <ore:cropLemon>, <ore:cropLemon>
 ]);
+
+# Maggoty Bread -- use a HarvestCraft-inspired recipe
+angmar.removeShaped(<lotr:item.maggotyBread>, null);
+angmar.addShaped(<lotr:item.maggotyBread>, [
+    [<ore:toolBakeware>, <ore:foodDough>],
+]);
+
+dolGuldur.removeShaped(<lotr:item.maggotyBread>, null);
+dolGuldur.addShaped(<lotr:item.maggotyBread>, [
+    [<ore:toolBakeware>, <ore:foodDough>],
+]);
+
+gundabad.removeShaped(<lotr:item.maggotyBread>, null);
+gundabad.addShaped(<lotr:item.maggotyBread>, [
+    [<ore:toolBakeware>, <ore:foodDough>],
+]);
+
+halfTrolls.removeShaped(<lotr:item.maggotyBread>, null);
+halfTrolls.addShaped(<lotr:item.maggotyBread>, [
+    [<ore:toolBakeware>, <ore:foodDough>],
+]);
+
+mordor.removeShaped(<lotr:item.maggotyBread>, null);
+mordor.addShaped(<lotr:item.maggotyBread>, [
+    [<ore:toolBakeware>, <ore:foodDough>],
+]);
+
+# The Uruk faction's crafting table isn't actually supported yet.  :-(
+#
+# uruk.removeShaped(<lotr:item.maggotyBread>, null);
+# uruk.addShaped(<lotr:item.maggotyBread>, [
+#     [<ore:toolBakeware>, <ore:foodDough>],
+# ]);
+
+# Milk -- allow milk to be poured into actual containers
+for name in CONTAINER_NAMES {
+    var emptyItem = EMPTY_CONTAINERS[name];
+    var filledMeta = CONTAINER_META[name];
+
+    recipes.addShapeless(<lotr:item.mugMilk>.definition.makeStack(filledMeta) * 4, [
+        <minecraft:milk_bucket>, emptyItem, emptyItem, emptyItem, emptyItem
+    ]);
+    recipes.addShapeless(<lotr:item.mugMilk>.definition.makeStack(filledMeta), [
+        <harvestcraft:freshmilkItem>, emptyItem
+    ]);
+}
 
 # Mushroom Pie -- adapt recipe to use HarvestCraft ore dict entries
 recipes.remove(<lotr:item.mushroomPie>);

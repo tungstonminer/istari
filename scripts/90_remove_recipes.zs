@@ -5,6 +5,9 @@ import mods.nei.NEI;
 ########################################################################################################################
 
 var HIDE_ONLY = [
+    # Cooking for Blockheads
+    <cookingbook:recipebook:3>,
+
     # HarvestCraft
     <harvestcraft:ovenon>,
 
@@ -37,6 +40,8 @@ var REMOVE_AND_HIDE = [
     <harvestcraft:salt>,
     <harvestcraft:oven>,
     <harvestcraft:quern>,
+    <harvestcraft:saltItem>,
+    <harvestcraft:spamcompressedsaltBlockalt>,
 
     # LOTR
     <lotr:tile.goran>,

@@ -3,10 +3,6 @@ import mods.nei.NEI;
 
 ########################################################################################################################
 
-var FLOUR_MAKING_ITEM = <ore:listAllgrain> | <ore:cropPotato> | <ore:cropRice>;
-
-########################################################################################################################
-
 # Apiary -- remove Apiary as it causes crashes
 recipes.remove(<harvestcraft:apiary>);
 

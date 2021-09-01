@@ -10,6 +10,9 @@ recipes.addShaped(
     ]
 );
 
+# Bread -- remove vanilla recipe in preference for cooking dough
+recipes.remove(<minecraft:bread>);
+
 # Cake -- use a HarvestCraft-friendly recipe
 recipes.removeShaped(<minecraft:cake>);
 recipes.addShapeless(<minecraft:cake>, [
