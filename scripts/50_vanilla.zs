@@ -3,6 +3,34 @@ import mods.thaumcraft.Crucible;
 
 ########################################################################################################################
 
+# Arrow -- allow creating arrows with iron or bronze nuggets for arrow heads
+recipes.remove(<minecraft:arrow>);
+recipes.addShaped(<minecraft:arrow> * 3, [
+    [<ore:horn>],
+    [<ore:stickWood>],
+    [<ore:feather>],
+]);
+recipes.addShaped(<minecraft:arrow> * 4, [
+    [<minecraft:flint>],
+    [<ore:stickWood>],
+    [<ore:feather>],
+]);
+recipes.addShaped(<minecraft:arrow> * 6, [
+    [<ore:nuggetIron>],
+    [<ore:stickWood>],
+    [<ore:feather>],
+]);
+recipes.addShaped(<minecraft:arrow> * 8, [
+    [<ore:nuggetThaumium>],
+    [<ore:stickWood>],
+    [<ore:feather>],
+]);
+recipes.addShaped(<minecraft:arrow> * 12, [
+    [<lotr:item.mithrilNugget>],
+    [<ore:stickWood>],
+    [<ore:feather>],
+]);
+
 # Blaze Rod -- allow creating blaze rods from Thamucraft materials
 recipes.addShaped(
     <minecraft:blaze_rod>, [

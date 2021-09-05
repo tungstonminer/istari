@@ -1,3 +1,4 @@
+*.bak
 .ReAuth.cfg
 .asm
 .curseclient
@@ -17,7 +18,7 @@ options.txt
 resourcepacks/
 saves/
 screenshots/
-servers.dat
 server/
+servers.dat
 usercache.json
 usernamecache.json

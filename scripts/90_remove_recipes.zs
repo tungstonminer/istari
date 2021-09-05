@@ -19,7 +19,6 @@ var HIDE_ONLY = [
 
     # YeOldeTanks -- remove creative mode items and anchronistic items
     <YeOldeTanks:yot.creativeBarrel>,
-    <YeOldeTanks:yot.infiniteWaterBucket>,
     <YeOldeTanks:yot.barrelminecart>,
 ] as IItemStack[];
 
@@ -70,6 +69,9 @@ var REMOVE_AND_HIDE = [
     <OpenBlocks:generic:10>, # unprepared stencil
     <OpenBlocks:generic:11>, # sketching pencil
     <OpenBlocks:genericUnstackable:0>, # pointer
+
+    # YeOldeTanks
+    <YeOldeTanks:yot.infiniteWaterBucket>,
 ] as IItemStack[];
 
 for itemStack in REMOVE_AND_HIDE {

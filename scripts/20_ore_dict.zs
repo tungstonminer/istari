@@ -20,6 +20,9 @@ for meta in LOTR_MUG_METAS {
     <ore:listAllmiruvor>.add(<lotr:item.mugMiruvor>.definition.makeStack(meta));
 }
 
+# LOTR -- dyed feathers count as feathers
+<ore:feather>.add(<lotr:item.featherDyed>);
+
 # LOTR -- add gems to appropriate dict entries
 <ore:blockDiamond>.add(<lotr:tile.blockGem:5>);
 <ore:blockEmerald>.add(<lotr:tile.blockGem:9>);

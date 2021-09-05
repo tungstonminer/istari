@@ -1,0 +1,4 @@
+BetterPlacement*.jar
+MouseTweaks*.jar
+neiRecipeHandlers*.jar
+ReAuth*.jar

@@ -9,6 +9,7 @@ import mods.lotr.ct.hobbits;
 import mods.lotr.ct.lothlorien;
 import mods.lotr.ct.mordor;
 import mods.lotr.ct.rivendell;
+import mods.lotr.millstone;
 
 ########################################################################################################################
 
@@ -175,7 +176,7 @@ mordor.addShaped(<lotr:item.maggotyBread>, [
 #     [<ore:toolBakeware>, <ore:foodDough>],
 # ]);
 
-# Milk -- allow milk to be poured into actual containers
+# Milk & Water -- allow milk & water to be poured into actual containers
 for name in CONTAINER_NAMES {
     var emptyItem = EMPTY_CONTAINERS[name];
     var filledMeta = CONTAINER_META[name];
@@ -185,6 +186,12 @@ for name in CONTAINER_NAMES {
     ]);
     recipes.addShapeless(<lotr:item.mugMilk>.definition.makeStack(filledMeta), [
         <harvestcraft:freshmilkItem>, emptyItem
+    ]);
+    recipes.addShapeless(<lotr:item.mugWater>.definition.makeStack(filledMeta) * 4, [
+        <minecraft:water_bucket>, emptyItem, emptyItem, emptyItem, emptyItem
+    ]);
+    recipes.addShapeless(<lotr:item.mugWater>.definition.makeStack(filledMeta), [
+        <harvestcraft:freshwaterItem>, emptyItem
     ]);
 }
 
@@ -209,6 +216,14 @@ recipes.addShaped(
         [<minecraft:leather>, <minecraft:leather>, <minecraft:leather>],
     ]
 );
+
+# Salt -- allow filtering sand to get salt
+recipes.addShapeless(<lotr:item.salt>, [
+    <ore:toolPot>, <ore:listAllwater>, <minecraft:sand> * 2, <ore:materialCloth>
+]);
+recipes.addShapeless(<lotr:item.salt>, [
+    <ore:toolPot>, <ore:listAllwater>, <lotr:tile.whiteSand>, <ore:materialCloth>
+]);
 
 # Scorched Stone -- Adapt recipe to allow various kinds of stone to be scorched
 furnace.remove(<lotr:tile.scorchedStone>);

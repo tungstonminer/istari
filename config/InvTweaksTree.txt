@@ -24,4 +24,12 @@
 -->
 <!-- Note: 'stuff' matches everything, even items that don't appear here -->
 <stuff treeVersion="1.7.0">
+    <pouches>
+        <enderPouch id="EnderStorage:enderPouch"/>
+        <focusPouch id="Thaumcraft:FocusPouch"/>
+        <bottomlessPouch id="ThaumicTinkerer:ichorPouch"/>
+        <largePouch id="lotr:item.pouch" damage="2"/>
+        <mediumPouch id="lotr:item.pouch" damage="1"/>
+        <smallPouch id="lotr:item.pouch" damage="0"/>
+    </pouches>
 </stuff>

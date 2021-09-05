@@ -39,7 +39,19 @@ white-list=true
 END
 
 read -d  USAGE <<-END
-USAGE: $(basename $0)
+USAGE: $(basename $0) <command> <options>*
+
+    installer -- create an archive for players to install locally
+    backup    -- create a backup of the current server
+    create    -- create a new server folder
+    delete    -- delete the current server folder
+    exec      -- run a command in the server then tail the logs
+    refresh   -- update mods, configs, scripts, etc. in the server
+    restart   -- stop the server and start it again
+    start     -- start the server exactly as-is
+    status    -- check whether the server is actually running
+    stop      -- stop the server
+    tail      -- tail the current server log
 END
 
 BASE_DIR="$(cd "$(dirname "$0")"; pwd)"
@@ -101,7 +113,7 @@ function command-installer {
         git clone "$REPO_DIR" $SERVER_NAME
         rm -rf $SERVER_NAME/.git
         zip -r9 "../$SERVER_NAME-$(date +'%Y-%m-%d-%H-%M').zip" $SERVER_NAME
-    popd >/dev/null
+    popd
 
     rm -rf installers/tmp
 }
@@ -113,9 +125,9 @@ function command-backup {
     find $BASE_DIR -name ".DS_Store" | xargs rm
     zip -r9 "backups/$SERVER_NAME-backup-$(date +'%Y-%m-%d-%H-%M').zip" "$BASE_DIR/server"
 
-    pushd "backups" &>/dev/null
-    ls -t | awk 'NR>5' | while read FILE; do rm $FILE; done
-    popd &>/dev/null
+    pushd backups
+        ls -t | awk 'NR>5' | while read FILE; do rm $FILE; done
+    popd
 }
 
 function command-create {
@@ -133,25 +145,11 @@ function command-create {
     echo "Creating server for $SERVER_NAME..."
     mkdir -p "$BASE_DIR/server"
 
-    pushd "$BASE_DIR/server" >/dev/null
+    pushd "$BASE_DIR/server"
         "$JAVA" -jar "../$FORGE_INSTALLER_JAR" --installServer
-
-        rm -rf mods
-        mkdir mods
-
-        ln -s "../config" .
-        ln -s "../scripts" .
         echo "eula=true" > eula.txt
-
-        mkdir logs
-        mv *.log logs
-
-        if [[ -e "../server.properties" ]]; then
-            ln -s ../server.properties .
-        else
-            echo "$SERVER_PROPERTIES" > server.properties
-        fi
-    popd >/dev/null
+        command-refresh
+    popd
 }
 
 function command-delete {
@@ -161,6 +159,41 @@ function command-delete {
 function command-exec {
     server-cmd $*
     command-tail
+}
+
+function command-refresh {
+    pushd "$BASE_DIR/server"
+        rm -rf config 2>/dev/null
+        cp -R ../config config
+
+        rm -rf mods
+        mkdir -p mods
+        pushd mods
+            ls ../../mods/ | while read FILE; do cp -r "../../mods/$FILE" "$FILE"; done
+            if [[ -e ../../client-mods.txt ]]; then
+                cat ../../client-mods.txt | while read PATTERN; do rm $PATTERN; done
+            fi
+        popd
+
+        rm -rf scripts 2>/dev/null
+        cp -R ../scripts scripts
+
+        mkdir -p logs
+        mv *.log logs
+        pushd logs
+            if [[ -e "server.log" ]]; then
+                zip -r9 "$(date +'%Y-%m-%d-%H-%M')-server.log.zip" server.log
+                rm server.log
+            fi
+            ls -t "*-server.log.zip" 2>/dev/null | awk 'NR>5' | while read FILE; do rm $FILE; done
+        popd
+
+        if [[ -e "../server.properties" ]]; then
+            cp -s ../server.properties .
+        else
+            echo "$SERVER_PROPERTIES" > server.properties
+        fi
+    popd
 }
 
 function command-restart {
@@ -190,39 +223,19 @@ function command-start {
     fi
 
     echo "[$(date)] No server running..."
-    pushd "$BASE_DIR/server" &>/dev/null
-        mkdir -p logs
-
+    pushd "$BASE_DIR/server"
         echo "[$(date)] Setting up server..."
         printf "Starting Minecraft Server with properties:\n\n$(cat server.properties)\n\n" >> logs/server.log
-
-        rm "ops.json" &>/dev/null
-        rm "whitelist.json" &>/dev/null
 
         rm stdin &>/dev/null
         touch stdin
 
         SERVER_JAR=$(ls forge*.jar | tail -n1)
 
-        rm -rf mods
-        mkdir -p mods
-        cd mods
-        ls ../../mods/ | while read FILE; do cp -r "../../mods/$FILE" "$FILE"; done
-	cat ../../client-mods.txt | while read PATTERN; do rm $PATTERN; done
-        cd ..
-
-        cd logs
-        if [[ -e "server.log" ]]; then
-            zip -r9 "$(date +'%Y-%m-%d-%H-%M')-server.log.zip" server.log
-	    rm server.log
-        fi
-        ls -t "*-server.log.zip" 2>/dev/null | awk 'NR>5' | while read FILE; do rm $FILE; done
-        cd ..
-
         echo "[$(date)] Starting server..."
         tail -n 0 -F stdin \
             | "$JAVA" -XX:+UseG1GC -Xmx3G -Xms3G \
-	    	-Dio.netty.leakDetection.level=advanced \
+                -Dio.netty.leakDetection.level=advanced \
                 -Dsun.rmi.dgc.server.gcInterval=2147483646 \
                 -Dfml.queryResult=confirm \
                 -XX:+UnlockExperimentalVMOptions \
@@ -236,17 +249,20 @@ function command-start {
 
         sleep 10
 
-        cat ../../ops.txt | while read USER_NAME; do
-            server-cmd "/op $USER_NAME"
-            server-cmd "/whitelist add $USER_NAME"
-        done
+        if [[ -e "../ops.txt" ]]; then
+            cat ../ops.txt | while read USER_NAME; do
+                server-cmd "/op $USER_NAME"
+            done
+        fi
 
-        cat ../../players.txt | while read USER_NAME; do
-            server-cmd "/whitelist add $USER_NAME"
-        done
+        if [[ -e "../players.txt" ]]; then
+            cat ../players.txt | while read USER_NAME; do
+                server-cmd "/whitelist add $USER_NAME"
+            done
+        fi
 
         server-cmd "/say Minecraft Server $SERVER_NAME is ready!"
-    popd &>/dev/null
+    popd
 
     ATTEMPTS=0
     STOP="NO"
@@ -256,13 +272,12 @@ function command-start {
         [[ "$PID" != "" ]] && STOP="YES"
 
         if [[ $ATTEMPTS -gt 60 ]]; then
-	    echo "[$(date)] Failed to start server after 60 seconds"
+            echo "[$(date)] Failed to start server after 60 seconds"
             exit 1
         fi
         (( ATTEMPTS = ATTEMPTS + 1 ))
         sleep 1
     done
-
 
     PORT=$(cat "$BASE_DIR/server/server.properties" | grep server-port | cut -d= -f2)
     echo "[$(date)] Server started on port $PORT after $ATTEMPTS seconds"
@@ -329,6 +344,7 @@ case $COMMAND in
     restart)    command-restart;;
     script-pid) find-running-script-pid;;
     server-pid) find-running-server-pid;;
+    refresh)    command-refresh;;
     start)      command-start $*;;
     status)     command-status;;
     stop)       command-stop;;
