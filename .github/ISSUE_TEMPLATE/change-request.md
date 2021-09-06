@@ -1,8 +1,9 @@
 ---
 name: Change Request
 about: Requests for to fix / adjust / add something in the modpack
-title: Change Request
-labels: change request
+title: ''
+labels: ''
+assignees: ''
 
 ---
 

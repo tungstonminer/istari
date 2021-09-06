@@ -2,8 +2,8 @@
 name: Server Access Request
 about: Requests for access to the official Istari server
 title: Server Access Request
-labels: server access
-assignees: tungstonminer
+labels: ''
+assignees: GnarlyOldGuy
 
 ---
 
