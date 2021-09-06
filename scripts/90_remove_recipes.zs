@@ -56,6 +56,15 @@ var REMOVE_AND_HIDE = [
     <minecraft:tnt_minecart>,
     <minecraft:hopper_minecart>,
     <minecraft:command_block_minecart>,
+    <minecraft:diamond_axe>,
+    <minecraft:diamond_boots>,
+    <minecraft:diamond_chestplate>,
+    <minecraft:diamond_helmet>,
+    <minecraft:diamond_hoe>,
+    <minecraft:diamond_leggings>,
+    <minecraft:diamond_pickaxe>,
+    <minecraft:diamond_shovel>,
+    <minecraft:diamond_sword>,
 
     # OpenBlocks -- remove anachronistic items
     <OpenBlocks:generic:0>, # glider wing

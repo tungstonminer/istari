@@ -105,6 +105,9 @@ dale.addShaped(<lotr:item.dalishPastry>, [
 # Corn -- allow HarvestCraft corn to be converted
 recipes.addShapeless(<lotr:item.corn>, [<harvestcraft:cornItem>]);
 
+# Diamond Horse Armor -- allow vanilla armor to be converted
+recipes.addShapeless(<lotr:item.horseArmorDiamond>, [<minecraft:diamond_horse_armor>]);
+
 # Hobbit Pancake -- use a HarvestCraft-friendly recipe
 hobbits.removeShapeless(<lotr:item.hobbitPancake>, null, true);
 hobbits.addShaped(<lotr:item.hobbitPancake>, [
@@ -208,20 +211,11 @@ recipes.addShapeless(<lotr:item.oliveBread>, [
     <ore:toolBakeware>, <ore:foodDough>, <ore:cropOlive>
 ]);
 
-# Pouch -- add a recipe to craft your own pouches
-recipes.addShaped(
-    <lotr:item.pouch>, [
-        [<minecraft:leather>, <minecraft:string>, <minecraft:leather>],
-        [<minecraft:leather>, <minecraft:ender_pearl>, <minecraft:leather>],
-        [<minecraft:leather>, <minecraft:leather>, <minecraft:leather>],
-    ]
-);
-
 # Salt -- allow filtering sand to get salt
 recipes.addShapeless(<lotr:item.salt>, [
-    <ore:toolPot>, <ore:listAllwater>, <minecraft:sand> * 2, <ore:materialCloth>
+    <ore:toolPot>, <ore:listAllwater>, <minecraft:sand>, <ore:materialCloth>
 ]);
-recipes.addShapeless(<lotr:item.salt>, [
+recipes.addShapeless(<lotr:item.salt> * 2, [
     <ore:toolPot>, <ore:listAllwater>, <lotr:tile.whiteSand>, <ore:materialCloth>
 ]);
 

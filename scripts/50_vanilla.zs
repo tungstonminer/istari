@@ -1,4 +1,6 @@
+import mods.lotr.millstone;
 import mods.thaumcraft.Crucible;
+import mods.thaumcraft.Infusion;
 
 
 ########################################################################################################################
@@ -48,12 +50,16 @@ recipes.addShapeless(<minecraft:cake>, [
 ]);
 
 # Ender Pearl -- allow creating ender pearls using LOTR materials
-recipes.addShaped(
-    <minecraft:ender_pearl>, [
-        [null, <lotr:item.quenditeCrystal>, null],
-        [<lotr:item.quenditeCrystal>, <ore:gemEmerald>, <lotr:item.quenditeCrystal>],
-        [null, <lotr:item.quenditeCrystal>, null],
-    ]
+Infusion.addRecipe(
+    "INFUSION",
+    <lotr:item.pearl>,
+    [
+        <lotr:item.guldurilCrystal>, <lotr:item.guldurilCrystal>,
+        <lotr:item.guldurilCrystal>, <lotr:item.guldurilCrystal>,
+    ],
+    "alienis 4, iter 12",
+    <minecraft:ender_pearl>,
+    5
 );
 
 # End Stone -- allow creating end stone from ender pearls
@@ -82,13 +88,13 @@ recipes.addShapeless(<lotr:item.mushroomPie>, [
 ]);
 
 # Quartz Block -- allow creating blocks of quartz my alchemy
-Crucible.addRecipe("CRUCIBLE", <minecraft:quartz_block>, <lotr:tile.oreStorage2:3>, "vitreus 4");
+Crucible.addRecipe("CRUCIBLE", <minecraft:quartz_block>, <lotr:tile.oreStorage2:3>, "ignis 4, vitreus 4");
 
 # Quartz -- allow breaking quartz blocks into quartz items
 recipes.addShapeless(<minecraft:quartz> * 4, [<minecraft:quartz_block>]);
 
 # Redstone -- allow creating redstone from raw materials
-recipes.addShapeless(<minecraft:redstone>, [<ore:nuggetCopper>, <ore:dustGlowstone>]);
+millstone.addRecipe(<lotr:item.ruby>, <minecraft:redstone> * 8, 1.0);
 
 # Slime Ball -- allow creating slime balls from food items
 recipes.addShaped(
@@ -100,4 +106,7 @@ recipes.addShaped(
 );
 
 # Soul Sand -- allow creating soul sand using alchemy
-mods.thaumcraft.Crucible.addRecipe("CRUCIBLE", <minecraft:soul_sand>, <minecraft:sand>, "spiritus 1");
+Crucible.addRecipe("CRUCIBLE", <minecraft:soul_sand>, <minecraft:sand>, "spiritus 1");
+
+# Wither Skull -- allow creating by alchemy
+Crucible.addRecipe("CRUCIBLE", <minecraft:skull:1>, <minecraft:skull:0>, "exanimis 8, alienis 20");
