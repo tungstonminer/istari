@@ -189,7 +189,7 @@ function command-refresh {
         popd
 
         if [[ -e "../server.properties" ]]; then
-            cp -s ../server.properties .
+            cp ../server.properties .
         else
             echo "$SERVER_PROPERTIES" > server.properties
         fi

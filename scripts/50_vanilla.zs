@@ -43,6 +43,12 @@ recipes.addShaped(
 # Bread -- remove vanilla recipe in preference for cooking dough
 recipes.remove(<minecraft:bread>);
 
+# Bucket -- allow making buckets out of tin
+recipes.addShaped(<minecraft:bucket>, [
+    [<ore:ingotTin>, null, <ore:ingotTin>],
+    [null, <ore:ingotTin>, null],
+]);
+
 # Cake -- use a HarvestCraft-friendly recipe
 recipes.removeShaped(<minecraft:cake>);
 recipes.addShapeless(<minecraft:cake>, [

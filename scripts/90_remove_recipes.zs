@@ -79,6 +79,15 @@ var REMOVE_AND_HIDE = [
     <OpenBlocks:generic:11>, # sketching pencil
     <OpenBlocks:genericUnstackable:0>, # pointer
 
+    # Traveller's Gear
+    <TravellersGear:simpleGear:0>, # cloak
+    <TravellersGear:simpleGear:1>, # belt
+    <TravellersGear:simpleGear:2>, # gold ring
+    <TravellersGear:simpleGear:3>, # silver ring
+    <TravellersGear:simpleGear:4>, # pauldrons
+    <TravellersGear:simpleGear:5>, # vambrace
+    <TravellersGear:simpleGear:6>, # title
+
     # YeOldeTanks
     <YeOldeTanks:yot.infiniteWaterBucket>,
 ] as IItemStack[];
