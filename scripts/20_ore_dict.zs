@@ -132,3 +132,14 @@ for meta in LOTR_MUG_METAS {
 <ore:listAllveggie>.add(<lotr:item.yam>);
 <ore:listAllvenisoncooked>.add(<lotr:item.deerCooked>);
 <ore:listAllvenisonraw>.add(<lotr:item.deerRaw>);
+
+# Thaumcraft -- add all shards to a convenient ore dictionary
+<ore:anyShard>.add(<Thaumcraft:ItemShard:0>);
+<ore:anyShard>.add(<Thaumcraft:ItemShard:1>);
+<ore:anyShard>.add(<Thaumcraft:ItemShard:2>);
+<ore:anyShard>.add(<Thaumcraft:ItemShard:3>);
+<ore:anyShard>.add(<Thaumcraft:ItemShard:4>);
+<ore:anyShard>.add(<Thaumcraft:ItemShard:5>);
+<ore:anyShard>.add(<Thaumcraft:ItemShard:6>);
+<ore:anyShard>.add(<ThaumicTinkerer:kamiResource:6>);
+<ore:anyShard>.add(<ThaumicTinkerer:kamiResource:7>);
