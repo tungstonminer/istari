@@ -133,6 +133,10 @@ for meta in LOTR_MUG_METAS {
 <ore:listAllvenisoncooked>.add(<lotr:item.deerCooked>);
 <ore:listAllvenisonraw>.add(<lotr:item.deerRaw>);
 
+# Minecraft -- stone arrow heads
+<ore:arrowHeadStone>.add(<minecraft:flint>);
+<ore:arrowHeadStone>.add(<lotr:item.obsidianShard>);
+
 # Thaumcraft -- add all shards to a convenient ore dictionary
 <ore:anyShard>.add(<Thaumcraft:ItemShard:0>);
 <ore:anyShard>.add(<Thaumcraft:ItemShard:1>);

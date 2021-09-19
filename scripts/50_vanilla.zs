@@ -13,7 +13,7 @@ recipes.addShaped(<minecraft:arrow> * 3, [
     [<ore:feather>],
 ]);
 recipes.addShaped(<minecraft:arrow> * 4, [
-    [<minecraft:flint>],
+    [<ore:arrowHeadStone>],
     [<ore:stickWood>],
     [<ore:feather>],
 ]);
@@ -63,9 +63,9 @@ Infusion.addRecipe(
         <lotr:item.guldurilCrystal>, <lotr:item.guldurilCrystal>,
         <lotr:item.guldurilCrystal>, <lotr:item.guldurilCrystal>,
     ],
-    "alienis 4, iter 12",
+    "iter 12",
     <minecraft:ender_pearl>,
-    5
+    2
 );
 
 # End Stone -- allow creating end stone from ender pearls
