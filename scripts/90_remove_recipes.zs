@@ -90,6 +90,7 @@ var REMOVE_AND_HIDE = [
 
     # YeOldeTanks
     <YeOldeTanks:yot.infiniteWaterBucket>,
+    <YeOldeTanks:yot.creativeBarrel>,
 ] as IItemStack[];
 
 for itemStack in REMOVE_AND_HIDE {

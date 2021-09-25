@@ -10,6 +10,18 @@ var LOTR_MUG_METAS = [
 # HarvestCraft -- don't allow a bucket of milk to count as milk food portion
 <ore:listAllmilk>.remove(<minecraft:milk_bucket>);
 
+# LOTR -- add fences to the ore dict
+for meta in 0 .. 15 {
+    <ore:fenceWood>.add(<lotr:tile.fence>.definition.makeStack(meta));
+}
+for meta in 0 .. 15 {
+    <ore:fenceWood>.add(<lotr:tile.fence2>.definition.makeStack(meta));
+}
+for meta in 0 .. 5 {
+    <ore:fenceWood>.add(<lotr:tile.fence3>.definition.makeStack(meta));
+}
+
+
 # LOTR -- add milk items to the foodMilk entry
 for meta in LOTR_MUG_METAS {
     <ore:listAllmilk>.add(<lotr:item.mugMilk>.definition.makeStack(meta));
@@ -132,6 +144,11 @@ for meta in LOTR_MUG_METAS {
 <ore:listAllveggie>.add(<lotr:item.yam>);
 <ore:listAllvenisoncooked>.add(<lotr:item.deerCooked>);
 <ore:listAllvenisonraw>.add(<lotr:item.deerRaw>);
+
+# Minecraft -- add fences to the ore dictionary
+for meta in 0 .. 5 {
+    <ore:fenceWood>.add(<minecraft:fence>.definition.makeStack(meta));
+}
 
 # Minecraft -- stone arrow heads
 <ore:arrowHeadStone>.add(<minecraft:flint>);
