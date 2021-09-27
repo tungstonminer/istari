@@ -105,8 +105,10 @@ dale.addShaped(<lotr:item.dalishPastry>, [
 # Corn -- allow HarvestCraft corn to be converted
 recipes.addShapeless(<lotr:item.corn>, [<harvestcraft:cornItem>]);
 
-# Diamond Horse Armor -- allow vanilla armor to be converted
+# Horse Armor -- allow vanilla armor to be converted
 recipes.addShapeless(<lotr:item.horseArmorDiamond>, [<minecraft:diamond_horse_armor>]);
+recipes.addShapeless(<lotr:item.horseArmorGold>, [<minecraft:golden_horse_armor>]);
+recipes.addShapeless(<lotr:item.horseArmorIron>, [<minecraft:iron_horse_armor>]);
 
 # Hobbit Pancake -- use a HarvestCraft-friendly recipe
 hobbits.removeShapeless(<lotr:item.hobbitPancake>, null, true);

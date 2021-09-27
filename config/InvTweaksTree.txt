@@ -26,6 +26,7 @@
 <stuff treeVersion="1.7.0">
     <pouches>
         <enderPouch id="EnderStorage:enderPouch"/>
+        <lensPouch id="ThaumicHorizons:lensCase"/>
         <focusPouch id="Thaumcraft:FocusPouch"/>
         <bottomlessPouch id="ThaumicTinkerer:ichorPouch"/>
         <largePouch id="lotr:item.pouch" damage="2"/>

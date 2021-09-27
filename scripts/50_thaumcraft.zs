@@ -1,4 +1,5 @@
 import mods.thaumcraft.Arcane;
+import mods.thaumcraft.Crucible;
 import mods.thaumcraft.Infusion;
 
 
@@ -34,6 +35,22 @@ Infusion.addRecipe(
     "perfodio 32, machina 32, potentia 16, vacuos 16, motus 16",
     ARCANE_BORE,
     5
+);
+
+# Nether Shard -- allow creating Nether Shards in the crucible
+Crucible.addRecipe("CRUCIBLE", <minecraft:ghast_tear>, <lotr:item.mithrilNugget>, "aqua 4, spiritus 4");
+
+# Obsidian Totem -- allow creating obsidian totems using LOTR materials
+Infusion.addRecipe(
+    "INFUSION",
+    <minecraft:obsidian>,
+    [
+        <lotr:item.naurite>, <lotr:item.naurite>,
+        <lotr:item.naurite>, <lotr:item.naurite>,
+    ],
+    "spiritus 12",
+    <Thaumcraft:blockCosmeticSolid:0>,
+    3
 );
 
 # Runic Matrix -- use edhelvir instead of ender pearl
