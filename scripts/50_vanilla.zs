@@ -59,6 +59,10 @@ recipes.addShapeless(<minecraft:cake>, [
 recipes.addShapeless(<minecraft:diamond>, [<lotr:item.diamond>]);
 recipes.addShapeless(<lotr:item.diamond>, [<minecraft:diamond>]);
 
+# Emerald -- allow LOTR emeralds to be converted and vice-versa
+recipes.addShapeless(<minecraft:emerald>, [<lotr:item.emerald>]);
+recipes.addShapeless(<lotr:item.emerald>, [<minecraft:emerald>]);
+
 # Ender Pearl -- allow creating ender pearls using LOTR materials
 Infusion.addRecipe(
     "INFUSION",

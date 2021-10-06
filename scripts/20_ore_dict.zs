@@ -164,3 +164,6 @@ for meta in 0 .. 5 {
 <ore:anyShard>.add(<Thaumcraft:ItemShard:6>);
 <ore:anyShard>.add(<ThaumicTinkerer:kamiResource:6>);
 <ore:anyShard>.add(<ThaumicTinkerer:kamiResource:7>);
+
+# Thaumcraft -- don't allow using Thaumcraft coins as gold nuggets
+<ore:nuggetGold>.remove(<Thaumcraft:ItemResource:18>);
