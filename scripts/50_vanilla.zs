@@ -123,4 +123,4 @@ recipes.addShaped(
 Crucible.addRecipe("CRUCIBLE", <minecraft:soul_sand>, <minecraft:sand>, "spiritus 1");
 
 # Wither Skull -- allow creating by alchemy
-Crucible.addRecipe("CRUCIBLE", <minecraft:skull:1>, <minecraft:skull:0>, "exanimis 8, alienis 20");
+Crucible.addRecipe("CRUCIBLE", <minecraft:skull:1>, <minecraft:skull:0>, "exanimis 8, alienis 4");

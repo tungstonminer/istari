@@ -213,6 +213,13 @@ recipes.addShapeless(<lotr:item.oliveBread>, [
     <ore:toolBakeware>, <ore:foodDough>, <ore:cropOlive>
 ]);
 
+# Pouch -- allow crafting pouches
+recipes.addShaped(<lotr:item.pouch>, [
+    [<minecraft:leather>, <minecraft:string>, <minecraft:leather>],
+    [<minecraft:leather>, <lotr:item.mithrilNugget>, <minecraft:leather>],
+    [<minecraft:leather>, <minecraft:leather>, <minecraft:leather>],
+]);
+
 # Salt -- allow filtering sand to get salt
 recipes.addShapeless(<lotr:item.salt>, [
     <ore:toolPot>, <ore:listAllwater>, <minecraft:sand>, <ore:materialCloth>

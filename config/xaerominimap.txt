@@ -1,12 +1,12 @@
 #CONFIG ONLY OPTIONS
 ignoreUpdate:1
-updateNotification:false
 settingsButton:false
 allowWrongWorldTeleportation:false
 differentiateByServerAddress:true
 debugEntityIcons:false
 debugEntityVariantIds:false
 #INGAME SETTINGS (DO NOT EDIT!)
+updateNotification:false
 minimap:true
 caveMaps:2
 caveZoom:1

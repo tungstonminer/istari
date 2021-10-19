@@ -14,6 +14,7 @@ import mods.thaumcraft.Infusion;
 <ore:anyShard>.add(<Thaumcraft:ItemShard:6>);
 
 var AIR_SHARD = <Thaumcraft:ItemShard:0>;
+var AMBER = <Thaumcraft:ItemResource:6>;
 var ANCIENT_STONE = <Thaumcraft:blockCosmeticSolid:11>;
 var ANCIENT_STONE_PEDESTAL = <Thaumcraft:blockCosmeticSolid:15>;
 var ANCIENT_STONE_SLAB = <Thaumcraft:blockCosmeticSlabStone:1>;
@@ -27,6 +28,10 @@ var GREATWOOD_PLANKS = <Thaumcraft:blockWoodenDevice:6>;
 
 
 ########################################################################################################################
+
+# Amber -- allow exchanging LOTR & TC amber
+recipes.addShapeless(AMBER, [<lotr:item.amber>]);
+recipes.addShapeless(<lotr:item.amber>, [AMBER]);
 
 # Ancient Stone -- allow creation by alchemy
 Crucible.addRecipe("GADOMANCY.E_PORTAL_CREATOR", ANCIENT_STONE, <minecraft:stone>, "alienis 2, alfirin 4");
@@ -62,11 +67,21 @@ Infusion.addRecipe(
     5
 );
 
+# Block of Flesh -- convert back to a pile of rotten flesh
+recipes.addShapeless(<minecraft:rotten_flesh> * 9, [<Thaumcraft:blockTaint:2>]);
+
 # Gold Coin -- allow making coins using the same recipe as LOTR coins
 recipes.addShaped(<Thaumcraft:ItemResource:18> * 4, [
     [<ore:nuggetGold>, <ore:nuggetGold>],
     [<ore:nuggetGold>, <ore:nuggetGold>],
 ]);
+
+# Iron Nugget -- homogenize recipes surrounding iron nuggets
+recipes.remove(<Thaumcraft:ItemNugget:0>);
+recipes.remove(<GardenStuff:iron_nugget>);
+recipes.remove(<lotr:item.ironNugget>);
+recipes.addShapeless(<Thaumcraft:ItemNugget:0>, [<ore:nuggetIron>]);
+recipes.addShapeless(<Thaumcraft:ItemNugget:0> * 9, [<ore:ingotIron>]);
 
 # Nether Shard -- allow creating Nether Shards in the crucible
 Crucible.addRecipe("CRUCIBLE", <minecraft:ghast_tear>, <lotr:item.mithrilNugget>, "aqua 4, spiritus 4");
