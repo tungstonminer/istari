@@ -4,6 +4,6 @@ If you've ever read The Lord of the Rings and wished you *were* Gandalf, this is
 
 Start by befriending the Hobbits, and creating a home base in which to begin your magical education in The Shire.  No hostile creatures will harm you, and you can easily hire obliging farmer Hobbits to tend your farm for you.  Gear up, and saddle a shire pony to make your first trip to Bree.  Beware of bandits by day, and raiding parties of Orcs by night, though!  It's not safe in the wide world outside The Shire.
 
-As you make your first wand, learn alchemy, and even how to imbue common objects with magical properties, you journeys will take you farther afield to befriend Dwarves, Elves, and men, but also to fight orcs, trolls, and wargs!  Prepare your most powerful magical artifacts, hire some Gondorian soldiers, and eventually take on the power of Mordor!
+As you make your first wand, learn alchemy, and even how to imbue common objects with magical properties, your journeys will take you farther afield to befriend Dwarves, Elves, and men, but also to fight Orcs, Trolls, and Wargs!  Prepare your most powerful magical artifacts, hire some Gondorian soldiers, and eventually take on the power of Mordor!
 
 To learn more, check out [the wiki](https://github.com/tungstonminer/istari/wiki)!
